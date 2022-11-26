@@ -150,7 +150,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                         context,
                         NFCTileService::class.java,
                         R.string.nfc,
-                        R.drawable.nfc_24
+                        R.drawable.baseline_nfc_24
                     )
                 }
                 resources.getString(R.string.language_key) -> {
