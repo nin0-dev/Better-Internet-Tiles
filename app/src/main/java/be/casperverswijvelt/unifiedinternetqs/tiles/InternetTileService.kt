@@ -219,6 +219,14 @@ class InternetTileService : ReportingTileService() {
                         cellularChangeListener?.currentTelephonyDisplayInfo
                     )
                     it.subtitle = getCellularNetworkSubtitle(applicationContext)
+                    if(getAirplaneModeEnabled(applicationContext)) {
+                        it.subtitle = getString(R.string.airplane_mode)
+                        it.icon = Icon.createWithResource(
+                            applicationContext,
+                            R.drawable.baseline_airplanemode_active_24
+                        )
+                        it.state = Tile.STATE_INACTIVE
+                    }
                 }
                 else -> {
 
@@ -235,6 +243,7 @@ class InternetTileService : ReportingTileService() {
                             applicationContext,
                             R.drawable.baseline_airplanemode_active_24
                         )
+
                     }
                 }
             }
