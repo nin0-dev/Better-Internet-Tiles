@@ -28,10 +28,10 @@ class LongPressReceiverActivity : Activity() {
                             Settings.ACTION_NETWORK_OPERATOR_SETTINGS
                         }
                         getWifiEnabled(applicationContext) -> {
-                            Settings.ACTION_WIFI_SETTINGS
+                            Settings.Panel.ACTION_WIFI
                         }
                         else -> {
-                            Settings.ACTION_WIRELESS_SETTINGS
+                            Settings.Panel.ACTION_INTERNET_CONNECTIVITY
                         }
                     }
                 }
@@ -39,7 +39,7 @@ class LongPressReceiverActivity : Activity() {
                     Settings.ACTION_NETWORK_OPERATOR_SETTINGS
                 }
                 WifiTileService::class.java.name -> {
-                    Settings.ACTION_WIFI_SETTINGS
+                    Settings.Panel.ACTION_WIFI
                 }
                 NFCTileService::class.java.name -> {
                     Settings.ACTION_NFC_SETTINGS
@@ -49,5 +49,6 @@ class LongPressReceiverActivity : Activity() {
         )
 
         startActivity(intent)
+        finish()
     }
 }
