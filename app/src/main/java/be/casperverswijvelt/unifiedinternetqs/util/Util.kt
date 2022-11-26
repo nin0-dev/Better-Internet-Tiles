@@ -181,7 +181,7 @@ fun getCellularNetworkText(
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
         connType = telephonyDisplayInfo?.let {
             when (telephonyDisplayInfo.overrideNetworkType) {
-                TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_LTE_CA -> "4G+"
+                TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_LTE_CA -> "LTE+"
                 TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_LTE_ADVANCED_PRO -> "5Ge"
                 TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_NR_NSA -> "5G"
                 TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_NR_ADVANCED -> "5G+"
@@ -249,7 +249,7 @@ private fun getNetworkClassString(networkType: Int): String? {
         TelephonyManager.NETWORK_TYPE_UMTS,
         TelephonyManager.NETWORK_TYPE_TD_SCDMA -> "3G"
         TelephonyManager.NETWORK_TYPE_LTE,
-        TelephonyManager.NETWORK_TYPE_IWLAN -> "4G"
+        TelephonyManager.NETWORK_TYPE_IWLAN -> "LTE"
         TelephonyManager.NETWORK_TYPE_NR -> "5G"
         else -> null
     }

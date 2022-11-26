@@ -49,4 +49,5 @@
     <string name="airplane_mode">Vliegtuigmodus</string>
     <string name="help_translate">Help met het vertalen van deze app!</string>
     <string name="language">Taal</string>
+    <string name="airplane_mode_on">Vliegtuigmodus staat aan</string>
 </resources>
