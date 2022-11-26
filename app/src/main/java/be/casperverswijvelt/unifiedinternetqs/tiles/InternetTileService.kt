@@ -5,6 +5,7 @@ import android.graphics.drawable.Icon
 import android.os.Handler
 import android.service.quicksettings.Tile
 import android.util.Log
+import android.widget.Toast
 import androidx.preference.PreferenceManager
 import be.casperverswijvelt.unifiedinternetqs.R
 import be.casperverswijvelt.unifiedinternetqs.listeners.CellularChangeListener
@@ -140,14 +141,22 @@ class InternetTileService : ReportingTileService() {
 
         when {
             wifiEnabled -> {
-                executeShellCommandAsync("svc wifi disable")
+                if(!getAirplaneModeEnabled(applicationContext))
+                {
+                    //airplane mode off
+                    executeShellCommandAsync("svc wifi disable")
 
-                isTurningOnData = true
-                executeShellCommandAsync("svc data enable") {
-                    if (it?.isSuccess != true) {
-                        isTurningOnData = false
+                    isTurningOnData = true
+                    executeShellCommandAsync("svc data enable") {
+                        if (it?.isSuccess != true) {
+                            isTurningOnData = false
+                        }
+                        syncTile()
                     }
-                    syncTile()
+                }
+                else {
+                    executeShellCommandAsync("svc wifi disable")
+
                 }
             }
             dataEnabled -> {
@@ -220,6 +229,13 @@ class InternetTileService : ReportingTileService() {
                     )
                     it.label = resources.getString(R.string.internet)
                     it.subtitle = getString(R.string.off)
+                    if(getAirplaneModeEnabled(applicationContext)) {
+                        it.subtitle = getString(R.string.airplane_mode)
+                        it.icon = Icon.createWithResource(
+                            applicationContext,
+                            R.drawable.baseline_airplanemode_active_24
+                        )
+                    }
                 }
             }
 
