@@ -49,5 +49,4 @@
     <string name="help_translate">Aidez-nous à traduire cette application !</string>
     <string name="app_description_about">Une tuile de réglage rapide Internet, unifiée et réellement utile (contrairement à Android 12).</string>
     <string name="app_description_shell_access">L\'activation/désactivation du Wi-Fi et des données mobiles, et la lecture du nom du réseau Wi-Fi actuel, nécessitent un accès au Shell. Shizuku peut s\'en charger sans nécessiter d\'accès root.</string>
-    <string name="airplane_mode_on">Le mode Avion est activé</string>
 </resources>

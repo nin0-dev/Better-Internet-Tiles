@@ -133,6 +133,47 @@ fun getWifiIcon(context: Context): Icon {
     )
 }
 
+fun getWifiSubtitle(context: Context): String {
+
+    val wm = context.getSystemService(Context.WIFI_SERVICE) as WifiManager
+    val rssi: Int? = try {
+        wm.connectionInfo.rssi
+    } catch (e: Exception) {
+        log("Could not get Wi-Fi RSSI: ${e.message}")
+        null
+    }
+    val signalStrength = rssi?.let {
+        WifiManager.calculateSignalLevel(it, 5) // 0-4
+    } ?: 0
+
+    return when (signalStrength) {
+            4 -> context.getString(R.string.on)
+            3 -> context.getString(R.string.on)
+            2 -> context.getString(R.string.on)
+            1 -> context.getString(R.string.poor_signal)
+            else -> context.getString(R.string.no_signal)
+    }
+}
+
+fun getCellularNetworkSubtitle(context: Context): String {
+
+    val tm =
+        context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+    val signalStrength = tm.signalStrength?.level ?: 0
+
+    // TODO: We should try to get the signal strength of the data sim here.
+    //  Only solution I found to do this requires fine location access, which I don't really want
+    //  to add.
+
+    return when (signalStrength) {
+        4 -> context.getString(R.string.on)
+        3 -> context.getString(R.string.on)
+        2 -> context.getString(R.string.on)
+        1 -> context.getString(R.string.poor_signal)
+        else -> context.getString(R.string.no_signal)
+    }
+}
+
 fun getCellularNetworkIcon(context: Context): Icon {
 
     val tm =

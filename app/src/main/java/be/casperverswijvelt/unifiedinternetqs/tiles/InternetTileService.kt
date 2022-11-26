@@ -50,6 +50,7 @@ class InternetTileService : ReportingTileService() {
                         setLastConnectedWifi(applicationContext, wifiSSID)
                         syncTile()
                     }
+
                 }
                 else -> {}
             }
@@ -187,11 +188,14 @@ class InternetTileService : ReportingTileService() {
 
                     it.state = Tile.STATE_ACTIVE
                     it.icon = getWifiIcon(applicationContext)
+                    it.subtitle = getWifiSubtitle(applicationContext)
                     it.label = if (isTurningOnWifi)
                         resources.getString(R.string.turning_on)
+
                     else
                         (if (wifiConnected) wifiSSID else null)
                             ?: resources.getString(R.string.not_connected)
+
                 }
                 isTurningOnData || dataEnabled -> {
 
@@ -205,6 +209,7 @@ class InternetTileService : ReportingTileService() {
                         applicationContext,
                         cellularChangeListener?.currentTelephonyDisplayInfo
                     )
+                    it.subtitle = getCellularNetworkSubtitle(applicationContext)
                 }
                 else -> {
 
@@ -214,6 +219,7 @@ class InternetTileService : ReportingTileService() {
                         R.drawable.ic_baseline_public_off_24
                     )
                     it.label = resources.getString(R.string.internet)
+                    it.subtitle = getString(R.string.off)
                 }
             }
 

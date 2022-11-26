@@ -49,5 +49,4 @@
     <string name="add_internet_tile">添加互联网磁贴</string>
     <string name="app_description_usage">点击新的互联网磁贴以在Wi-Fi和移动数据之间进行切换。其各自的磁贴也可以使用，就像在安卓12之前一样。</string>
     <string name="request_root_access_title">请求Root权限</string>
-    <string name="airplane_mode_on">飞行模式已开启</string>
 </resources>

@@ -70,4 +70,6 @@
     <string name="settings_key" translatable="false">settings</string>
     <string name="add_tiles_key" translatable="false">add_tiles</string>
     <string name="airplane_mode_on">Airplane mode is on</string>
+    <string name="poor_signal">Poor signal</string>
+    <string name="no_signal">No signal</string>
 </resources>
